@@ -71,9 +71,9 @@ def RetrievalTask(queries, corpus, meta_sen, qrels, model, dist, k):
         elif dist == 'dotprod':
             scores = dotprod(queries_vecs, meta_sen_vecs[key])
         elif dist == 'euclidean':
-            scores = euclidean(queries_vecs, meta_sen_vecs[key]) + cos_sim(queries_vecs, meta_sen_vecs[key])
+            scores = euclidean(queries_vecs, meta_sen_vecs[key]) 
         elif dist == 'chebyshev':
-            scores = chebyshev(queries_vecs, meta_sen_vecs[key]) + + cos_sim(queries_vecs, meta_sen_vecs[key])
+            scores = chebyshev(queries_vecs, meta_sen_vecs[key])
 
         # get maximum score for each query
         meta_scores[key] = torch.max(scores, dim=1).values.numpy().tolist()
